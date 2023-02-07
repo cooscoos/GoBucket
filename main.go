@@ -12,4 +12,6 @@ func main() {
 		log.Panic(err)
 	}
 	fmt.Println(cpu_temp)
+
+	readlinux.ReadMemory()
 }
