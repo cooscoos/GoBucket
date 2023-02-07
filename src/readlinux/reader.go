@@ -26,7 +26,7 @@ func ReadTemp() (float64, error) {
 		return .0, errors.New(fmt.Sprintf("Failed to open %v because: %v.", filename, err))
 	}
 
-	// Cpu temp log is one line: a temperature value in units of 1e-3 degC.
+	// Average cpu temp log is always one line: a temperature value in units 1e-3 degC.
 	temps, err := strconv.ParseFloat(reading[0], 32)
 	if err != nil {
 		return .0, errors.New(fmt.Sprintf("Error parsing cpu temperatures to float because: %v", err))
@@ -46,7 +46,7 @@ func ReadMemory() (Memory, error) {
 	}
 
 	// Search through the lines for patterns of interest
-	// Can link to struct tags????
+	// Can link to regexp with struct tags????
 	for _, line := range reading {
 		fmt.Println(line)
 	}
