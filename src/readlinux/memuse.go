@@ -10,10 +10,9 @@ import (
 
 // Stores info about system memory usage.
 type Memory struct {
-	total     float64
-	free      float64
-	available float64
-	used      float64
+	Total     float64
+	Available float64
+	Used      float64
 }
 
 // Create a new memory struct based on input string array
@@ -30,6 +29,7 @@ func (m Memory) New(reading []string) (Memory, error) {
 		match := re.Match(line)
 
 		if match != nil {
+			fmt.Println(match)
 			s := match.NamedGroups["number"]
 			val, err := strconv.ParseFloat(s, 64)
 
@@ -60,15 +60,15 @@ func (m Memory) FromArray(mem_array []float64) Memory {
 	total := mem_array[0]
 	free := mem_array[1]
 	avail := mem_array[2]
-	buffers := kbToGb(mem_array[3])
-	cached := kbToGb(mem_array[4])
-
-	m.total = kbToGb(total)
-	m.free = kbToGb(free)
-	m.available = kbToGb(avail)
+	buffers := mem_array[3]
+	cached := mem_array[4]
 
 	// Used memory defined as follows:
-	m.used = kbToGb(total - free - buffers - cached)
+	used := total - free - buffers - cached
+
+	m.Total = kbToGb(total)
+	m.Available = kbToGb(avail)
+	m.Used = kbToGb(used)
 
 	return m
 
