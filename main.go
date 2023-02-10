@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"gobucket/src/readlinux"
 	"log"
 	"net/http"
+
+	"github.com/cooscoos/gobucket/src/readlinux"
 )
 
 func main() {
