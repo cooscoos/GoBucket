@@ -18,6 +18,7 @@ func main() {
 
 }
 
+// Defines the html of the index page for GoBucket
 func indexPage(w http.ResponseWriter, r *http.Request) {
 
 	// Fetch cpu temperatures and memory usage

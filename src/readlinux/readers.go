@@ -29,7 +29,7 @@ func ReadTemp() (float64, error) {
 	return temps / 1000, nil
 }
 
-// Read and return memory usage.
+// Read and return memory usage as a Memory struct.
 func ReadMemory() (Memory, error) {
 
 	// Read in memory usage from here

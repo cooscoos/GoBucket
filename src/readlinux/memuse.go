@@ -15,7 +15,7 @@ type Memory struct {
 	Used      float64
 }
 
-// Create a new memory struct based on input string array
+// Create memory struct based on input string array captured from /proc/meminfo.
 func (m Memory) New(reading []string) (Memory, error) {
 
 	// Search through each line of string array with regexp capturing to <number>.
@@ -53,10 +53,8 @@ func (m Memory) New(reading []string) (Memory, error) {
 // Convert array of memory values into a Memory struct (in GB)
 func (m Memory) FromArray(mem_array []float64) Memory {
 
-	// The order of memory values extracted from linux system is:
+	// The order of memory values extracted from /proc/meminfo:
 	// [MemTotal, MemFree, MemAvailable, Buffers, Cached]
-	// Convert all to GB
-
 	total := mem_array[0]
 	free := mem_array[1]
 	avail := mem_array[2]
@@ -74,8 +72,7 @@ func (m Memory) FromArray(mem_array []float64) Memory {
 
 }
 
-// Round a kb value to a gb value returning to 1 decimal point
+// Convert kB value to gB, returning to 1 decimal point.
 func kbToGb(m float64) float64 {
 	return math.Round(m*10/math.Pow(1024, 2)) / 10
-
 }
