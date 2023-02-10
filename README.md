@@ -1,8 +1,9 @@
 # GoBucket
 
-Grab and report logs of cpu temp and memory usage from host system running Linux.
+Basic implementation of grabbing and reporting CPU temperatures and memory usage from host system running Linux.
 
-For a Rust implementation of this, see [RustBucket](https://github.com/cooscoos/RustBucket).
+Run and then go to http://localhost:8000.
 
-## To do
-- Set up web server to display readings.
+![snapshot of the app](/snapshot.png "snapshot of the app")
+
+For a more fleshed-out Rust implementation of this, see [RustBucket](https://github.com/cooscoos/RustBucket).
